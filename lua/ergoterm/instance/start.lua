@@ -21,6 +21,7 @@ function M.start(term)
     vim.api.nvim_buf_call(term._state.bufnr, function()
       term._state.job_id = M._start_job(term)
     end)
+    vim.api.nvim_buf_set_name(term._state.bufnr, "term://" .. term.name)
     M._setup_buffer_autocommands(term)
     term:on_start()
   end
